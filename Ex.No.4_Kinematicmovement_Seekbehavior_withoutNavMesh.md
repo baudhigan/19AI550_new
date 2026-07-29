@@ -1,6 +1,6 @@
 # Ex.No: 4  Implementation of Kinematic movement -seek and Flee behavior in Unity
-### DATE:                                                                            
-### REGISTER NUMBER : 
+### DATE: 29.07.2026                                                                         
+### REGISTER NUMBER : 212223230028
 ### AIM: 
 To write a program to simulate the process of seek and Flee behavior in Unity without NavigationMeshAgent. 
 ### Algorithm:
@@ -25,70 +25,39 @@ To write a program to simulate the process of seek and Flee behavior in Unity wi
     
 ### Program:
 ```
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class seekScript : MonoBehaviour
+public class welcome1 : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public Transform target;  // The object to seek
-    public float speed = 5f;  // Movement speed
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Transform target;
+    public Transform f;
+    public Transform s;
+    private float speed = 0.2f;
     void Start()
     {
-        
+        print("Welcome");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (target == null) return;  // Exit if no target is assigned
-
-        // Calculate the desired direction
-        Vector3 direction = (target.position - transform.position).normalized;
-
-        // Move the object towards the target
-        transform.position += direction * speed * Time.deltaTime;
-    }
-}
-```
-```
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class fleeScript : MonoBehaviour
-{
-    // Start is called before the first frame update
-    public Transform target;  // The object to seek
-    public float speed = 5f;  // Movement speed
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (target == null) return;  // Exit if no target is assigned
-
-        // Calculate the desired direction
-        Vector3 direction = (transform.position-target.position).normalized;
-
-        // Move the object towards the target
-        transform.position += direction * speed * Time.deltaTime;
+        // seek script
+        Vector3 dir = (target.position - s.position).normalized;
+        s.position += dir * speed;
+        //flee script
+        Vector3 dir1 = (f.position - target.position).normalized;
+        f.position += dir1 * speed;
     }
 }
 ```
 ### Output:
 
+<img width="1920" height="1080" alt="Screenshot (41)" src="https://github.com/user-attachments/assets/598b67b0-6160-40cd-93a0-45f890fc2c9f" />
 
-
-
-
-
-
-
+<img width="1920" height="1080" alt="Screenshot (42)" src="https://github.com/user-attachments/assets/b5490cd6-7834-4d95-8812-32e94a07641c" />
 
 ### Result:
 Thus the simple seek behavior was implemented successfully.
