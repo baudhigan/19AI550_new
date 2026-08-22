@@ -1,6 +1,6 @@
 # Ex.No: 8  Implementation of Path finding using A* algorithm
-### DATE: 22/08/2026                                                                           
-### REGISTER NUMBER : 212223230028
+### DATE: 22.08.2026                                                                           
+### REGISTER NUMBER :212223230028
 ### AIM: 
 To write a program to create graph using waypoints and use A* algorithm to find path between source and destination.
 ### Algorithm:
@@ -47,6 +47,22 @@ public class WaypointGraph : MonoBehaviour {
 **#3.Pathfinding.cs**
 using System.Collections.Generic;
 using UnityEngine;
+public class Pathfinding : MonoBehaviour {
+    public static List<Waypoint> FindPath(Waypoint start, Waypoint goal) {
+                    current = wp;
+                }
+            }
+
+            if (current == goal) {
+                return ReconstructPath(cameFrom, current);
+            }
+
+            openSet.Remove(current);
+
+            foreach (var neighbor in current.neighbors) {
+                float tentativeG = gScore[current] + Vector3.Distance(current.transform.position, neighbor.transform.position);
+                if (tentativeG < gScore[neighbor]) {
+                    cameFrom[neighbor] = current;
                     gScore[neighbor] = tentativeG;
                     fScore[neighbor] = tentativeG + Vector3.Distance(neighbor.transform.position, goal.transform.position);
 
@@ -104,14 +120,9 @@ Check the following
 4. AICharacter assigned a start and goal
 ```
 ### Output:
+<img width="1917" height="1017" alt="image" src="https://github.com/user-attachments/assets/f8285a3c-17f5-4c24-a05c-32dd7ee254a2" />
 
-<img width="1920" height="1200" alt="Screenshot 2026-08-07 135441" src="https://github.com/user-attachments/assets/28349f4f-bade-4414-a3e3-b192666cb803" />
-
-
-
-
-
-
+<img width="1917" height="1017" alt="image" src="https://github.com/user-attachments/assets/a7d50e61-c838-46c2-9646-1229082eccb9" />
 
 
 ### Result:
