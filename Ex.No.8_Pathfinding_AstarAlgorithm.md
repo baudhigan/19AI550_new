@@ -1,6 +1,6 @@
 # Ex.No: 8  Implementation of Path finding using A* algorithm
-### DATE:                                                                            
-### REGISTER NUMBER : 
+### DATE: 22/08/2026                                                                           
+### REGISTER NUMBER : 212223230028
 ### AIM: 
 To write a program to create graph using waypoints and use A* algorithm to find path between source and destination.
 ### Algorithm:
@@ -47,40 +47,6 @@ public class WaypointGraph : MonoBehaviour {
 **#3.Pathfinding.cs**
 using System.Collections.Generic;
 using UnityEngine;
-public class Pathfinding : MonoBehaviour {
-    public static List<Waypoint> FindPath(Waypoint start, Waypoint goal) {
-        var openSet = new List<Waypoint>();
-        var cameFrom = new Dictionary<Waypoint, Waypoint>();
-        var gScore = new Dictionary<Waypoint, float>();
-        var fScore = new Dictionary<Waypoint, float>();
-
-        foreach (var wp in FindObjectsOfType<Waypoint>()) {
-            gScore[wp] = float.PositiveInfinity;
-            fScore[wp] = float.PositiveInfinity;
-        }
-
-        gScore[start] = 0f;
-        fScore[start] = Vector3.Distance(start.transform.position, goal.transform.position);
-        openSet.Add(start);
-
-        while (openSet.Count > 0) {
-            Waypoint current = openSet[0];
-            foreach (var wp in openSet) {
-                if (fScore[wp] < fScore[current]) {
-                    current = wp;
-                }
-            }
-
-            if (current == goal) {
-                return ReconstructPath(cameFrom, current);
-            }
-
-            openSet.Remove(current);
-
-            foreach (var neighbor in current.neighbors) {
-                float tentativeG = gScore[current] + Vector3.Distance(current.transform.position, neighbor.transform.position);
-                if (tentativeG < gScore[neighbor]) {
-                    cameFrom[neighbor] = current;
                     gScore[neighbor] = tentativeG;
                     fScore[neighbor] = tentativeG + Vector3.Distance(neighbor.transform.position, goal.transform.position);
 
@@ -136,8 +102,10 @@ Check the following
 2. Neighbors set manually via Inspector
 3. WaypointGraph script on a manager
 4. AICharacter assigned a start and goal
+```
 ### Output:
 
+<img width="1920" height="1200" alt="Screenshot 2026-08-07 135441" src="https://github.com/user-attachments/assets/28349f4f-bade-4414-a3e3-b192666cb803" />
 
 
 
