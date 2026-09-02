@@ -1,6 +1,6 @@
 # Ex.No: 9  Implementation of RollarBall Design using Reinforcement Learning 
-### DATE:                                                                            
-### REGISTER NUMBER : 
+### DATE: 02/09/2026                                                                           
+### REGISTER NUMBER : 212223230028
 ### AIM: 
 To write a program to design RollerBall and train the Rollerbal by Reinforcement learning  in Unity 
 ### Installation Required 
@@ -66,51 +66,6 @@ public class RollerAgent : Agent
     public override void Initialize()
     {
         if (rBody == null) rBody = GetComponent<Rigidbody>();
-    }
-
-    public override void OnEpisodeBegin()
-    {
-        // Reset agent velocity and position
-        rBody.velocity = Vector3.zero;
-        rBody.angularVelocity = Vector3.zero;
-        transform.localPosition = new Vector3(0, 0.5f, 0);
-
-        // Move target to a random location on the plane
-        float range = 3.0f;
-        targetTransform.localPosition = new Vector3(Random.Range(-range, range), 0.5f, Random.Range(-range, range));
-    }
-
-    public override void CollectObservations(VectorSensor sensor)
-    {
-        // Target position (3 floats)
-        sensor.AddObservation(targetTransform.localPosition);
-
-        // Agent position (3 floats)
-        sensor.AddObservation(transform.localPosition);
-
-        // Agent velocity (2 floats: x,z)
-        sensor.AddObservation(rBody.velocity.x);
-        sensor.AddObservation(rBody.velocity.z);
-        // -> total = 3 + 3 + 2 = 8
-    }
-
-    public override void OnActionReceived(ActionBuffers actions)
-    {
-        // Continuous actions: [0] = moveX, [1] = moveZ
-        float moveX = Mathf.Clamp(actions.ContinuousActions[0], -1f, 1f);
-        float moveZ = Mathf.Clamp(actions.ContinuousActions[1], -1f, 1f);
-
-        Vector3 controlSignal = new Vector3(moveX, 0, moveZ);
-        rBody.AddForce(controlSignal * forceMultiplier);
-
-        // Reward shaping
-        float distanceToTarget = Vector3.Distance(transform.localPosition, targetTransform.localPosition);
-
-        // If agent reaches target -> give reward and end episode
-        if (distanceToTarget < 1.5f)
-        {
-            SetReward(1.0f);
-            EndEpisode();
         }
 
         // If falls off the plane -> negative reward and end episode
@@ -157,13 +112,17 @@ behaviors:
     max_steps: 500000
     time_horizon: 64
     summary_freq: 10000
-### Output:
+```
 
+### Output
 
+```
 
+<img width="519" height="320" alt="image" src="https://github.com/user-attachments/assets/772d41cb-5ad6-4f45-8e90-9c381a685bb2" /><br></br>
 
+<img width="421" height="292" alt="WhatsApp Image 2026-05-22 at 8 09 44 AM" src="https://github.com/user-attachments/assets/04d8c92d-95c8-4d43-b16b-b982939e91bc" />
 
-
+```
 
 
 
