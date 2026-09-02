@@ -114,7 +114,7 @@ behaviors:
     summary_freq: 10000
 ```
 
-### Output
+### Output:
 
 
 <img width="519" height="320" alt="image" src="https://github.com/user-attachments/assets/772d41cb-5ad6-4f45-8e90-9c381a685bb2" /><br></br>
