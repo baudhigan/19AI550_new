@@ -116,13 +116,12 @@ behaviors:
 
 ### Output
 
-```
 
 <img width="519" height="320" alt="image" src="https://github.com/user-attachments/assets/772d41cb-5ad6-4f45-8e90-9c381a685bb2" /><br></br>
 
 <img width="421" height="292" alt="WhatsApp Image 2026-05-22 at 8 09 44 AM" src="https://github.com/user-attachments/assets/04d8c92d-95c8-4d43-b16b-b982939e91bc" />
 
-```
+
 
 
 
